@@ -90,8 +90,32 @@ class User(AbstractBaseUser):
 
 
 
-
+class CreateInvoice(models.Model):
+    brandname =models.CharField(max_length=100)
+    date = models.DateTimeField(blank=True ,null=True)
+    send_usermail = models.EmailField(unique=True)
+    reciver_usermail = models.EmailField(unique=True) 
+    invoiceno = models.CharField(max_length=21)
+    item_description =models.TextField()
+    price = models.FloatField(null=True, blank=True)
+    qty = models.IntegerField(null=True, blank=True)
+    total = models.IntegerField(null=True, blank=True)
+    subtotal = models.IntegerField(null=True, blank=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE , related_name="Invoice_User" , null = True, blank=True)
  
+
+class SendInvoice(models.Model):
+    pass
+    # Title = 
+    # to = 
+    # sendermail=
+    # user = models.ForeignKey(User,on_delete=models.CASCADE , related_name="SendUser" , null = True, blank=True)
+ 
+
+
+
+    
+
 
 
 

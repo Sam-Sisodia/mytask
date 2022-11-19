@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+
 
 {% block content %}
 
@@ -7,7 +7,7 @@
         color: red;
         list-style-type:none;
       }
-      .success{
+      .success{We'll never share your email with anyone else.
         color:green;
       }
 </style>
@@ -29,7 +29,7 @@
       <div class="mb-3">
       <label for="inputEmail4" class="form-label">Email</label>
       <input type="email" name ="email" class="form-control" id="inputEmail4">
-      <div id="emailHelp" class="form-text" required >We'll never share your email with anyone else.</div>
+      <div id="emailHelp" class="form-text" required ></div>
       {{form.errors.email}}
       </div>
       <div class="mb-3">

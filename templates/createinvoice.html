@@ -1,0 +1,90 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+<style>
+    .errorlist{
+      color: red;
+      list-style-type:none;
+    }
+    .success{
+      color:green;
+    }
+</style>
+<div class="container">
+<div class="row my-3">
+<div class="col-sm-6 offset-sm-3">
+ <h3>Send Invoice </h3>
+ <hr>
+
+
+ <form action="" method="post" novalidate class="shadow p-5">
+    {% csrf_token %}
+    <div class="mb-3">
+       <label for="inputEmail4" class="form-label">Subject</label>
+       <input type="email" name="subject"  class="form-control" id="inputEmail4">
+       {{form.errors.name}}
+      </div>
+
+    <div class="mb-3">
+    <label for="inputEmail4" class="form-label">To</label>
+    <input type="email" name ="email" class="form-control" id="inputEmail4">
+    <div id="emailHelp" class="form-text" required >We'll never share your email with anyone else.</div>
+    {{form.errors.email}}
+    </div>
+    <!--Enter discription -->
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Enter Message </label>
+        <textarea   name="discription"   class="form-control" id="exampleFormControlTextarea1" rows="4">{{objs.Description}}</textarea>
+      </div>
+
+    <!--discription end -->
+
+    <!--File field -->
+    <div> 
+        <label class="form-label" for="customFile">Upload Document </label>
+           
+        <input type="file"  class="form-control"  value = "" name="file" id="customFile"/>
+      </div> <br>
+
+
+    <!--end file-->
+
+    
+   
+    {% if messages %}
+     {% for message in messages %}
+      
+       <span {% if message.tags %}   class ="{{message.tags}}"  {% endif %}>
+          {{message}}</span>
+
+      {% endfor %}
+
+  {% endif %}
+    <div class="text-end">
+    <button type="Submit" class="btn btn-danger">Submit</button>
+    </div>
+    <br>
+   
+    </form>
+    
+
+
+   
+ 
+
+</div>
+</div>
+</div>
+
+
+
+
+{%endblock%}

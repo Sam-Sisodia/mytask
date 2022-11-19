@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
 
 {% block content %}
+
 <style>
       .errorlist{
         color: red;
@@ -10,47 +10,77 @@
         color:green;
       }
 </style>
-
-
-
 <div class="container">
-  <div class="row my-3">
-    <div class="col-sm-6 offset-sm-3">
-      <h3>Login</h3>
-      <hr>
-      <form action="" method="post" novalidate class="shadow p-5">
-        {% csrf_token %}
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Customer Login</h3>
+   <hr>
 
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        {% if messages %}
-        {% for message in messages %}
 
-        <span {% if message.tags %} class="{{message.tags}}" {% endif %}>
-          {{message}}</span>
+   <form action="" method="post" novalidate class="shadow p-5">
+      {% csrf_token %}
+      
+
+      <div class="mb-3">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" name ="email" class="form-control" id="inputEmail4">
+      
+      {{form.errors.email}}
+      </div>
+      <div class="mb-3">
+      <label for="inputPassword1" class="form-label">Password</label>
+      <input type="password" name = "password" class="form-control" id="inputPassword1">
+      </div>
+     
+      {% if messages %}
+       {% for message in messages %}
+        
+         <span {% if message.tags %}   class ="{{message.tags}}"  {% endif %}>
+            {{message}}</span>
 
         {% endfor %}
 
-        {% endif %}
-        <small><a href="#">Forgot Password ?</a></small> <br>
-        <input type="submit" class="btn btn-primary mt-4" value="Login">
-        <br>
+    {% endif %}
+      <div class="text-end">
+      <button type="Submit" class="btn btn-danger">Submit</button>
+      </div>
+      <br>
+      <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="login"
+         class="text-danger">Login Now</a> </small></div>
 
 
-        <div class="text-center text-primary fw-bold"><small>New to ShoppinglyX ? <a
-              href="" class="text-danger">Create an Account</a> </small></div>
+         <div class="col-md-3">
+          <a class="btn btn-outline-dark" href="accounts/google/login/?process=login" role="button" style="text-transform:none">
+            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+            Sign In Via Google
+          </a>
+          <link   rel="stylesheet" 
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+            crossorigin="anonymous">
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+            crossorigin="anonymous">
+   
+   
+   
+          </script>
+        
+         
       </form>
+      
 
-    </div>
+
+     
+   
+
   </div>
+ </div>
 </div>
 
 
-{% endblock %}
 
+
+   
+
+{%endblock%}

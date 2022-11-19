@@ -10,6 +10,7 @@ from .forms import *
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as user_logout
+from django.core.mail import send_mail,EmailMessage
 
 from .models import *
 def RegisterUser(request,):
@@ -60,8 +61,8 @@ def Login(request):
             auth_login(request, user)
             user=request.user
             if user.is_varified == True:
+                return render(request,'dashboard.html')
 
-                return redirect('login')
             else:
                 messages.info(request ,"Please Verify Your Accounts ")
         else:
@@ -88,4 +89,37 @@ def verifyaccount(request,token):
         return HttpResponse("<h1> Invalid Token </h1>")
 
 
+def sendinvoice(request):
+    if request.method == "POST":
+        # subject = request.POST.get("subject")
+        # print(subject)
+        rceiveremail= request.POST.get("rceiveremail")
+        print(rceiveremail)
+        discription = request.POST.get("discription")
+        print(discription)
+        userfile = request.FILES['userfile']
+        
 
+
+
+
+
+        
+        email =EmailMessage(
+            "Verification mail","Hello",settings.EMAIL_HOST,[rceiveremail],)
+        email.content_subtype="html"
+        file = request.FILES['userfile']
+        email.attach(file.name, file.read(),file.content_type)
+   
+        email.send()
+
+        return HttpResponse("Done hai bro ")
+
+    
+    return  render(request, 'sendinvoice.html')
+
+
+
+def createinvoice(request):
+    return  render(request, 'createinvoice.html')
+    

@@ -1,3 +1,16 @@
-.hh{
-    color:red;
+
+
+.bdr{
+   color: red;
+   border: 3px solid black;
+   height: 700px;
 }
+
+
+.dbox{
+    color:red;
+    border: 1px solid blue;
+    height: 600px;
+ }
+ 
+ 

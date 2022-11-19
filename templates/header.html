@@ -1,4 +1,5 @@
 {% load static %}
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -15,6 +16,34 @@
     </head> 
 
  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                  <img src="{% static 'static/img/logo.png' %}" alt="" width="200" height="60">
+                </a>
+
+    
+            </div>
+            <li class="nav-item dropdown " style="list-style-type:none;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{% static 'static/img/download.jpeg' %}" class="rounded-circle" alt="" width="90" height="60">
+                </a>
+                <ul  class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  <li><a class="dropdown-item" href="#">{{request.user.fullname}}</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            
+            
+        </div>
+        
+        
+      </nav>
 
     
 
